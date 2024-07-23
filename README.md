@@ -1,4 +1,4 @@
 # ArmBookCourse
-Repositorio prueba armbook examples
+Repositorio Tp2 curso ArmBook 2024 (Continuacion tp1)
 
 
