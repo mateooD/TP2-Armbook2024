@@ -1,14 +1,14 @@
 //=====[Libraries]==============
-#include "smart_home_system.h"
+#include "smart_parking_system.h"
 
 
 //=====[Main function]========
 int main()
 {
-    smartParkingInit()
+    smartParkingInit();
 
     while (true) {
-        smartParkingUpdate()
+        smartParkingUpdate();
     }
 }
 
