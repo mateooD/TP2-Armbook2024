@@ -1,14 +1,18 @@
-#include "mbed.h"
+//=====[Libraries]==============
+#include "smart_home_system.h"
 
-//testing
 
+//=====[Main function]========
 int main()
 {
-    DigitalIn B1_USER(BUTTON1);
-
-    DigitalOut LD2(LED2);
+    smartParkingInit()
 
     while (true) {
-        LD2 = B1_USER;
+        smartParkingUpdate()
     }
 }
+
+
+
+
+
