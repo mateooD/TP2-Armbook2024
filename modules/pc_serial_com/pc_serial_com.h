@@ -1,8 +1,7 @@
-
 //=====[#include guards - begin]===============================================
 
-#ifndef _MATRIX_KEYPAD_H_
-#define _MATRIX_KEYPAD_H_
+#ifndef _PC_SERIAL_COM_H_
+#define _PC_SERIAL_COM_H_
 
 //=====[Declaration of public defines]=========================================
 
@@ -10,9 +9,13 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
-void matrixKeyboardInit(int updateTime_ms);
-char matrixKeyboardUpdate();
+void pcSerialComInit();
+char pcSerialComCharRead();
+void pcSerialComStringWrite( const char* str );
+void pcSerialComUpdate();
+bool pcSerialComCodeCompleteRead();
+void pcSerialComCodeCompleteWrite( bool state );
 
 //=====[#include guards - end]=================================================
 
-#endif // _MATRIX_KEYPAD_H_
+#endif // _PC_SERIAL_COM_H_

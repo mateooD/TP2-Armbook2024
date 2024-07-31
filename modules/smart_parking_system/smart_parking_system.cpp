@@ -1,8 +1,11 @@
 //=====[Libraries]=============================================================
 
 #include "arm_book_lib.h"
-
+#include "matrix_keyboard.h"
+#include "led_control.h"
 #include "smart_parking_system.h"
+
+#include "mbed.h"
 
 
 //=====[Declaration of private defines]========================================
@@ -21,15 +24,19 @@
 
 //=====[Implementations of public functions]===================================
 
-void smartHomeSystemInit()
+void smartParkingInit()
 {
- 
+  matrixKeyboardInit(40);
+  ledControlInit();
 }
 
-void smartHomeSystemUpdate()
-{
-  
-    delay(SYSTEM_TIME_INCREMENT_MS);
+void smartParkingUpdate() {
+    char key = matrixKeyboardUpdate();
+    if (key != '\0') {
+        ledToggle(); // Toggle the LED integrated into the board each time a key is pressed
+    }
+    delay(100); // Wait for 100 ms
+
 }
 
 //=====[Implementations of private functions]==================================
