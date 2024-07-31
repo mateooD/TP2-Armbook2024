@@ -1,7 +1,7 @@
 //=====[#include guards - begin]===============================================
 
-#ifndef _PC_SERIAL_COM_H_
-#define _PC_SERIAL_COM_H_
+#ifndef _DATE_AND_TIME_H_
+#define _DATE_AND_TIME_H_
 
 //=====[Declaration of public defines]=========================================
 
@@ -9,11 +9,11 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
-void pcSerialComInit();
-char pcSerialComCharRead();
-void pcSerialComUpdate();
+char* dateAndTimeRead();
 
+void dateAndTimeWrite( int year, int month, int day, 
+                       int hour, int minute, int second );
 
 //=====[#include guards - end]=================================================
 
-#endif // _PC_SERIAL_COM_H_
+#endif // _DATE_AND_TIME_H_

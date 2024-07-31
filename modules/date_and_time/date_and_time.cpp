@@ -1,13 +1,8 @@
 //=====[Libraries]=============================================================
 
-#include "arm_book_lib.h"
-#include "matrix_keyboard.h"
-#include "led_control.h"
-#include "smart_parking_system.h"
-#include "pc_serial_com.h"
-
 #include "mbed.h"
 
+#include "date_and_time.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -25,17 +20,28 @@
 
 //=====[Implementations of public functions]===================================
 
-
-void smartParkingInit()
+char* dateAndTimeRead()
 {
-  pcSerialComInit();
-  matrixKeyboardInit(40);
-  ledControlInit();
+    time_t epochSeconds;
+    epochSeconds = time(NULL);
+    return ctime(&epochSeconds);    
 }
 
-// Actualización del sistema de estacionamiento
-void smartParkingUpdate() {
-    pcSerialComUpdate();
+void dateAndTimeWrite( int year, int month, int day, 
+                       int hour, int minute, int second )
+{
+    struct tm rtcTime;
+
+    rtcTime.tm_year = year - 1900;
+    rtcTime.tm_mon  = month - 1;
+    rtcTime.tm_mday = day;
+    rtcTime.tm_hour = hour;
+    rtcTime.tm_min  = minute;
+    rtcTime.tm_sec  = second;
+
+    rtcTime.tm_isdst = -1;
+
+    set_time( mktime( &rtcTime ) );
 }
 
 //=====[Implementations of private functions]==================================
