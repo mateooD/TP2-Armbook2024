@@ -10,10 +10,11 @@
 //=====[Declarations (prototypes) of public functions]=========================
 
 void pcSerialComInit();
-char pcSerialComCharRead();
+void pcSerialComButton();
 void pcSerialComUpdate();
 
 
 //=====[#include guards - end]=================================================
 
 #endif // _PC_SERIAL_COM_H_
+

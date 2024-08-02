@@ -5,6 +5,9 @@
 #include "led_control.h"
 #include "smart_parking_system.h"
 #include "pc_serial_com.h"
+#include "button_control.h"
+#include "event_log.h"
+
 
 #include "mbed.h"
 
@@ -28,14 +31,27 @@
 
 void smartParkingInit()
 {
-  pcSerialComInit();
-  matrixKeyboardInit(40);
-  ledControlInit();
+    pcSerialComInit();
+    pcSerialComButton();
+    buttonControlInit();
+    matrixKeyboardInit(40);
+    ledControlInit();
+    eventLogInit();  
+  
 }
+  
 
 // Actualización del sistema de estacionamiento
 void smartParkingUpdate() {
-    pcSerialComUpdate();
+  if (isIngressButtonPressed() || isEgressButtonPressed()) {
+        pcSerialComUpdate();
+    }
+
+ if (isButtonB1Pressed()) {
+        printEventLog();
+    }
+
 }
+
 
 //=====[Implementations of private functions]==================================

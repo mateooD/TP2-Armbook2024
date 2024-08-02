@@ -3,10 +3,12 @@
 #include "mbed.h"
 #include "arm_book_lib.h"
 #include "pc_serial_com.h"
-#include "date_and_time.h"
 #include "matrix_keyboard.h"
 #include "led_control.h"
-#include "event_log.h"
+#include "button_control.h"
+#include "patente_capture.h"
+
+
 
 //=====[Declaration of private defines]========================================
 #define MAX_PATENTE_LENGTH 6
@@ -41,11 +43,26 @@ static void handleMatrixKeyboard();
 
 void pcSerialComInit()
 {
-    uartUsb.write("Ingrese o registre la patente. Presione '*' para finalizar.\r\n", 64);
+    uartUsb.write("Sistema de Estacionamiento Inteligente Iniciado.\r\n", 56);
+    delay(2000);
 }
 
+void pcSerialComButton()
+{
+    uartUsb.write("Presione el boton verde para ingresar o el boton rojo para egresar.\r\n", 73);
+}
+
+
 void pcSerialComUpdate() {
-    handleMatrixKeyboard();
+    if (isIngressButtonPressed()) {
+        uartUsb.write("Vehiculo ingresando. Ingrese la patente:\r\n", 42);
+        capturePatente(); // Llama al nuevo módulo para capturar la patente
+        pcSerialComButton();
+    } else if (isEgressButtonPressed()) {
+        uartUsb.write("Vehiculo egresando. Ingrese la patente:\r\n", 42);
+        capturePatente(); // Llama al nuevo módulo para capturar la patente
+        pcSerialComButton();
+    }
 }
 
 // Enviar una cadena a través del puerto serial
@@ -78,3 +95,4 @@ static void handleMatrixKeyboard() {
         }
     }
 }
+

@@ -134,3 +134,4 @@ static void matrixKeypadReset()
 {
     matrixKeypadState = MATRIX_KEYPAD_SCANNING;
 }
+
