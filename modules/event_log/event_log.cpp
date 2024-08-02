@@ -2,7 +2,7 @@
 #include "pc_serial_com.h"
 
 
-static char eventLog[MAX_LOG_ENTRIES][200];
+static char eventLog[MAX_LOG_ENTRIES][100];
 static int logIndex = 0;
 
 void eventLogInit() {

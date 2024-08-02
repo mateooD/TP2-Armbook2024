@@ -42,9 +42,9 @@ void capturePatente() {
 
     // Registra el evento en el log con la patente y la acción
     if (isIngressButtonPressed()) {
-        eventLogAddEntry("Ingreso - Patente: ",patente);
+        eventLogAddEntry("Ingreso - Patente: ");
     } else if (isEgressButtonPressed()) {
-        eventLogAddEntry("Egreso - Patente: ",patente);
+        eventLogAddEntry("Egreso - Patente: ");
     }
     eventLogAddEntry(patente);
     eventLogAddEntry("\r\n");
