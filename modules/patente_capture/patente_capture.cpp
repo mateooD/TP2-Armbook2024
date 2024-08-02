@@ -19,6 +19,15 @@ void capturePatente() {
 
     uartUsb.write("Ingrese la patente:\r\n", 23);
 
+    if (isIngressButtonPressed()) {
+        eventLogAddEntry("Ingreso - Patente: ");
+    } else if (isEgressButtonPressed()) {
+        eventLogAddEntry("Egreso - Patente: ");
+    } else {
+        uartUsb.write("Error: Ningún botón de ingreso o egreso detectado.\r\n", 51);
+        return; // Sale de la función si no se detecta el botón
+    }
+
     while (timer.read_ms() < TIMEOUT_MS) {
         char key = matrixKeyboardUpdate();
 
@@ -40,12 +49,7 @@ void capturePatente() {
     uartUsb.write(patente, patenteIndex);
     uartUsb.write("\r\n", 2);
 
-    // Registra el evento en el log con la patente y la acción
-    if (isIngressButtonPressed()) {
-        eventLogAddEntry("Ingreso - Patente: ");
-    } else if (isEgressButtonPressed()) {
-        eventLogAddEntry("Egreso - Patente: ");
-    }
+    // Registra la patente en el log
     eventLogAddEntry(patente);
     eventLogAddEntry("\r\n");
 }
