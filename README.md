@@ -92,9 +92,11 @@ Auto Egresando
 ### Comunicacion serial PC
 
 Secuencia ingreso y egreso de vehiculo
+
 ![car_in_out_pc](https://github.com/mateooD/TP2-Armbook2024/blob/Revision_tp2/figures/in_and_out.png)
 
-Impresion Event log 
+Impresion Event log :
+
 ![event_log](https://github.com/mateooD/TP2-Armbook2024/blob/Revision_tp2/figures/eventlog.png)
 
 
