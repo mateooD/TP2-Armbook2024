@@ -44,7 +44,9 @@ static void handleMatrixKeyboard();
 void pcSerialComInit()
 {
     uartUsb.write("Sistema de Estacionamiento Inteligente Iniciado.\r\n", 56);
+    
     delay(2000);
+
 }
 
 void pcSerialComButton()
@@ -55,12 +57,16 @@ void pcSerialComButton()
 
 void pcSerialComUpdate() {
     if (isIngressButtonPressed()) {
+        turnOnGreenLed(); // Enciende el LED verde
         uartUsb.write("Vehiculo ingresando. Ingrese la patente:\r\n", 42);
         capturePatente(); // Llama al nuevo módulo para capturar la patente
+        turnOffGreenLed();
         pcSerialComButton();
     } else if (isEgressButtonPressed()) {
+        turnOnRedLed();
         uartUsb.write("Vehiculo egresando. Ingrese la patente:\r\n", 42);
         capturePatente(); // Llama al nuevo módulo para capturar la patente
+        turnOffRedLed();
         pcSerialComButton();
     }
 }
