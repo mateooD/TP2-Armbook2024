@@ -28,7 +28,7 @@ El proyecto se basó en la placa de desarrollo STM32F4, en particular el modeloS
 
 Podemos plantear un diagrama como el siguiente:
 
-![diagrama_bloques]https://github.com/mateooD/TP2-Armbook2024/blob/Revision_tp2/figures/bloques%20tp2.png)
+![diagrama_bloques](https://github.com/mateooD/TP2-Armbook2024/blob/Revision_tp2/figures/bloques%20tp2.png)
 
 ## Estructura archivos fuente
 ```
@@ -106,4 +106,5 @@ Impresion Event log :
 ## Codigo
 En el repositorio se encuentran el archivo main, junto con las librerias necesarias para el funcionamiento. Ademas como se mencionó antes, el codigo se encuentra modularizado para 
 Esta en desarrollo la documentacion con ***Doxygen***.
+
 :construction: En proceso :construction:
